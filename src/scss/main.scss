@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  background-image: url('../../public/images/disney-cover.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  margin-bottom: 80px;
+  z-index: -1;
+  position: relative;
+}
+
+.search-form{
+  display: flex;
+  justify-content: center;
+  padding: 35px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 10px;
+  z-index: 1;
+}

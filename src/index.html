@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Disney Characters</title>
+
+    <link rel="stylesheet" href="./scss/main.scss" />
+    <link rel="icon" href="./images/favicon.png" />
+  </head>
+
+  <body>
+   
+    <header class="header">
+      <div class="">
+        <form class="search-form" id="search-form" action="#" method="get">
+          <input class="js__inputName" type="text" id="busqueda" name="busqueda" placeholder="Busca tu personaje" required>
+          <button class="js__submitBtn" type="submit">Buscar</button>
+      </form>
+      </div>
+    </header>
+    
+    <main>
+      <ul class="charactersUl js__charactersUl">
+      </ul>
+      <ul class="favCharacters js__favCharacters">
+      </ul>
+
+      <script src="./js/main.js"></script>
+    </main>
+
+  </body>
+</html>
