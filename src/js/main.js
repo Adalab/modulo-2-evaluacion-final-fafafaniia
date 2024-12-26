@@ -4,7 +4,7 @@ const submitBtn = document.querySelector('.js__submitBtn');
 const inputName = document.querySelector('.js__inputName');
 
 const charactersUl = document.querySelector('.js__charactersUl');
-const favCharactersUl = document.querySelector('js__favCharactersUl');
+const favCharactersUl = document.querySelector('.js__favCharactersUl');
 
 let html = '';
 let characters = [];
@@ -45,7 +45,27 @@ const handleFavChar = (ev) => { debugger
     const chName = chosenCard.querySelector('.card_title').innerHTML;
 
     const character = characters.filter((character) => character.name === chName);
-    chosenCard.classList.toggle('favCharacters');
+    /*chosenCard.classList.toggle('favCharacters');*/
+
+    let htmlFav = '';
+    
+
+    const fav = favCharacters.find((character) => character.name === chName);
+    if(fav === null){
+        favCharacters.push(character[0]);
+    }
+
+    for ( const favCh of favCharacters) {
+    
+        htmlFav += `
+        <li class="card favCharacters">
+              <h2 class="card_title">${favCh.name}</h2>
+              <img src="${favCh.imageUrl || placeHolder}" alt="Foto de ${favCh.name}"></img>
+        </li>
+        `;
+    }
+
+    favCharactersUl.innerHTML = htmlFav;
 };
 
 
