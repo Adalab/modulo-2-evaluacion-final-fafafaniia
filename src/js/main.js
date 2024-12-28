@@ -12,7 +12,7 @@ let html = '';
 let characters = [];
 let favCharacters = [];
 
-const placeHolder = "https://placehold.co/210x295?text=Disney";
+const placeHolder = "https://placehold.co/210x295/80c0f5/white/?text=Disney";
 
 
 fetch('//api.disneyapi.dev/character?pageSize=50')
@@ -26,7 +26,7 @@ fetch('//api.disneyapi.dev/character?pageSize=50')
         html += `
         <li class="card">
               <h2 class="card_title">${charactersObj.name}</h2>
-              <img src="${charactersObj.imageUrl || placeHolder}" alt="Foto de ${charactersObj.name}"></img>
+              <img src="${charactersObj.imageUrl || placeHolder}" alt="Foto de ${charactersObj.name}" onerror="this.onerror=null; this.src='${placeHolder}';"></img>
         </li>
         `;
     }
@@ -64,7 +64,7 @@ const handleFavChar = (ev) => {
         htmlFav += `
         <li class="card favCharacters">
               <h2 class="card_title">${favCh.name}</h2>
-              <img src="${favCh.imageUrl || placeHolder}" alt="Foto de ${favCh.name}"></img>
+              <img src="${favCh.imageUrl || placeHolder}" alt="Foto de ${favCh.name}" onerror="this.onerror=null; this.src='${placeHolder}';"></img>
         </li>
         `;
     }
@@ -93,7 +93,7 @@ const handleFilteredName = (ev) =>{
         htmlFiltered += `
         <li class="card">
             <h2 class="card_title">${filterCh.name}</h2>
-            <img src="${filterCh.imageUrl || placeHolder}" alt="Foto de ${filterCh.name}"></img>
+            <img src="${filterCh.imageUrl || placeHolder}" alt="Foto de ${filterCh.name}" onerror="this.onerror=null; this.src='${placeHolder}';"></img>
         </li>
         `;
     }
@@ -124,7 +124,7 @@ const loadFavCharacters = () => {
           htmlFav += `
             <li class="card favCharacters">
                   <h2 class="card_title">${favCh.name}</h2>
-                  <img src="${favCh.imageUrl || placeHolder}" alt="Foto de ${favCh.name}"></img>
+                  <img src="${favCh.imageUrl || placeHolder}" alt="Foto de ${favCh.name}" onerror="this.onerror=null; this.src='${placeHolder}';"></img>
             </li>
           `;
         }
