@@ -6,6 +6,8 @@ const inputName = document.querySelector('.js__inputName');
 const charactersUl = document.querySelector('.js__charactersUl');
 const favCharactersUl = document.querySelector('.js__favCharactersUl');
 
+const deleteFavs = document.querySelector('js__deleteFavs')
+
 let html = '';
 let characters = [];
 let favCharacters = [];
@@ -31,8 +33,6 @@ fetch('//api.disneyapi.dev/character?pageSize=50')
 
     charactersUl.innerHTML = html;
 
-    debugger
-
     const cards = document.querySelectorAll('.card');
     cards.forEach(singleCard =>{
         singleCard.addEventListener('click', handleFavChar);
@@ -40,7 +40,7 @@ fetch('//api.disneyapi.dev/character?pageSize=50')
 
 });
 
-const handleFavChar = (ev) => { debugger
+const handleFavChar = (ev) => {
     const chosenCard = ev.currentTarget;
     const chName = chosenCard.querySelector('.card_title').innerHTML;
 
@@ -51,8 +51,11 @@ const handleFavChar = (ev) => { debugger
     
 
     const fav = favCharacters.find((character) => character.name === chName);
-    if(fav === null){
+    if(fav === undefined){
         favCharacters.push(character[0]);
+    }
+    else{
+        favCharacters = favCharacters.filter((character) => character.name !== chName);
     }
 
     for ( const favCh of favCharacters) {
@@ -66,8 +69,43 @@ const handleFavChar = (ev) => { debugger
     }
 
     favCharactersUl.innerHTML = htmlFav;
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(singleCard =>{
+        singleCard.addEventListener('click', handleFavChar);
+    });
+};
+
+const handleFilteredName = (ev) =>{
+    ev.preventDefault();
+  debugger;
+  const nameValue = inputName.value;
+  const filteredCharacters = characters.filter((character) => {
+        return character.name.toLowerCase()
+        .includes(nameValue.toLowerCase())
+    });
+
+    let htmlFiltered = '';
+
+  for ( const filterCh of filteredCharacters) {
+    
+    htmlFiltered += `
+    <li class="card">
+          <h2 class="card_title">${filterCh.name}</h2>
+          <img src="${filterCh.imageUrl || placeHolder}" alt="Foto de ${filterCh.name}"></img>
+    </li>
+    `;
+    }
+
+    charactersUl.innerHTML = htmlFiltered;
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(singleCard =>{
+        singleCard.addEventListener('click', handleFavChar);
+    });
+
 };
 
 
-
-
+inputName.addEventListener('input', handleFilteredName);
+submitBtn.addEventListener('click', handleFilteredName);

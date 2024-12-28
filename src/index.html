@@ -12,19 +12,22 @@
   <body>
    
     <header class="header">
+    </header>
+
+    <main>
       <div class="">
         <form class="search-form" id="search-form" action="#" method="get">
           <input class="js__inputName" type="text" id="busqueda" name="busqueda" placeholder="Busca tu personaje" required>
           <button class="js__submitBtn" type="submit">Buscar</button>
       </form>
       </div>
-    </header>
-    
-    <main>
       <ul class="charactersUl js__charactersUl">
       </ul>
-      <ul class="favCharacters js__favCharactersUl">
-      </ul>
+      <div>
+        <ul class="favCharacters js__favCharactersUl">
+        </ul>
+        <button class="deleteFavs js__deleteFavs">Borrar favoritos</button>
+      </div>
 
       <script src="./js/main.js"></script>
     </main>
